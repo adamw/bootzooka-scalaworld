@@ -22,8 +22,8 @@ class Footer extends Component {
   render() {
     return (
       <div className="Footer">
-        <p>Bootzooka - application scaffolding by <span><a href="http://softwaremill.com">SoftwareMill</a></span>,
-          sources available on <span><a href="https://github.com/softwaremill/bootzooka/">GitHub</a></span>
+        <p>Hiking - application scaffolding by <span><a href="http://softwaremill.com">SoftwareMill</a></span>,
+          sources available on <span><a href="https://github.com/softwaremill/hiking/">GitHub</a></span>
         </p>
         <p>
           { this.state.version }

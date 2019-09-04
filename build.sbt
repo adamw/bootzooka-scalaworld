@@ -98,7 +98,7 @@ lazy val yarnTask = inputKey[Unit]("Run yarn with arguments")
 lazy val copyWebapp = taskKey[Unit]("Copy webapp")
 
 lazy val commonSettings = commonSmlBuildSettings ++ Seq(
-  organization := "com.softwaremill.bootzooka",
+  organization := "io.scalaworld.hiking",
   scalaVersion := "2.12.9",
   libraryDependencies ++= commonDependencies,
   uiDirectory := baseDirectory.value.getParentFile / uiProjectName,
@@ -135,12 +135,12 @@ lazy val buildInfoSettings = Seq(
   buildInfoOptions += BuildInfoOption.BuildTime,
   buildInfoOptions += BuildInfoOption.ToJson,
   buildInfoOptions += BuildInfoOption.ToMap,
-  buildInfoPackage := "com.softwaremill.bootzooka.version",
+  buildInfoPackage := "io.scalaworld.hiking.version",
   buildInfoObject := "BuildInfo"
 )
 
 lazy val fatJarSettings = Seq(
-  assemblyJarName in assembly := "bootzooka.jar",
+  assemblyJarName in assembly := "hiking.jar",
   assembly := assembly.dependsOn(yarnTask.toTask(" build")).value,
   assembly := assembly.dependsOn(copyWebapp).value,
   assemblyMergeStrategy in assembly := {
@@ -155,7 +155,7 @@ lazy val fatJarSettings = Seq(
 lazy val dockerSettings = Seq(
   dockerExposedPorts := Seq(8080),
   dockerBaseImage := "openjdk:8u212-jdk-stretch",
-  packageName in Docker := "bootzooka",
+  packageName in Docker := "hiking",
   dockerUsername := Some("softwaremill"),
   dockerCommands := {
     dockerCommands.value.flatMap {
@@ -192,7 +192,7 @@ def now(): String = {
 lazy val rootProject = (project in file("."))
   .settings(commonSettings)
   .settings(
-    name := "bootzooka",
+    name := "hiking",
     herokuFatJar in Compile := Some((assemblyOutputPath in backend in assembly).value),
     deployHeroku in Compile := ((deployHeroku in Compile) dependsOn (assembly in backend)).value
   )
@@ -201,7 +201,7 @@ lazy val rootProject = (project in file("."))
 lazy val backend: Project = (project in file("backend"))
   .settings(
     libraryDependencies ++= dbDependencies ++ httpDependencies ++ jsonDependencies ++ apiDocsDependencies ++ monitoringDependencies ++ dbTestingStack ++ securityDependencies ++ emailDependencies,
-    mainClass in Compile := Some("com.softwaremill.bootzooka.Main")
+    mainClass in Compile := Some("io.scalaworld.hiking.Main")
   )
   .enablePlugins(BuildInfoPlugin)
   .settings(commonSettings)

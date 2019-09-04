@@ -36,7 +36,7 @@
     </encoder>
   </appender>
 
-  <logger name="com.softwaremill.bootzooka" level="${LOG_LEVEL:-DEBUG}" additivity="false">
+  <logger name="io.scalaworld.hiking" level="${LOG_LEVEL:-DEBUG}" additivity="false">
     <appender-ref ref="STDOUT"/>
   </logger>
 
