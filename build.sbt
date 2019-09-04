@@ -32,7 +32,8 @@ val httpDependencies = Seq(
   "org.http4s" %% "http4s-circe" % http4sVersion,
   "org.http4s" %% "http4s-prometheus-metrics" % http4sVersion,
   "com.softwaremill.sttp" %% "async-http-client-backend-monix" % sttpVersion,
-  "com.softwaremill.tapir" %% "tapir-http4s-server" % tapirVersion
+  "com.softwaremill.tapir" %% "tapir-http4s-server" % tapirVersion,
+  "com.softwaremill.tapir" %% "tapir-sttp-client" % tapirVersion
 )
 
 val monitoringDependencies = Seq(
